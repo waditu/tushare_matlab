@@ -4,9 +4,11 @@
 Lianrui Fu   2018.10.31 
 
 1 概要说明
+
 Matlab版本需要2016b及以上。接口使用说明可以用help pro_api和help pro_bar查看。调用示例见tushare_pro_test.m所示。
 
 2 接口说明
+
 当前Matlab版本主要提供query接口（可获取股票列表、日线行情等数据），以及通用行情接口(pro_bar)。
 输出数据为matalb table数据类型，和pandas的DataFrame非常接近。调用失败时返回[]并显示相应原因，常见原因：
 
@@ -20,13 +22,16 @@ Matlab版本需要2016b及以上。接口使用说明可以用help pro_api和hel
 
 
 2.1 query说明
+
 %调用方式：
+
 % results = api.query(api,api_name,param_name1,param_1,param_name2, param_2, ...);
 %具体参数与python接口参数一致。
 
 (1) stock_basic
 
 调用示例：
+
 >>
 token = 'c75b7d8389a****************'; % replace your token here
 api = pro_api(token);
@@ -80,7 +85,9 @@ disp(df_daily(1:10,:));
 2.2 pro_bar说明
 
  data = pro_bar(ts_code, pro_api, start_date, end_date, freq, asset, market, adj, ma, factors, retry_count);
+
 输入参数： 不能少于4个
+
      ts_code:证券代码，支持股票,ETF/LOF,期货/期权,港股,数字货币,如'000001.SZ','000905.SH'
      start_date:开始日期  YYYYMMDD, 如'20181001'
      end_date:结束日期 YYYYMMDD,''表示当前日期
@@ -127,14 +134,23 @@ disp(dd_ma3(1:10,:));
 
 
 3 常见问题（FAQs）
+
 (1)	Matlab版本必须得2016b及以上吗？
+
 是的。
+
 (2)	如何引用tushare的matlab接口？
+
 如果是在matlab_sdk目录下，可以直接调用。如果在其它目录下调用，可以添加matlab_sdk目录到Matlab的系统环境变量中。
 addpath(‘D:/xxx/xxx/ matlab_sdk’)；%相对路径和绝对路径均可
+
+
 (3)	Pro_bar所列参数都支持吗？
+
 有的参数是预留的，后面会继续完善。具体见示例程序所示。
+
 (4)	问题和建议反馈。
+
 可以发邮件 fulrbuaa#163{dot}com, 邮件标题请注明 “Tushare Matlab ***问题”。
 
 
